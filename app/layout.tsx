@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+{/*import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import { RightAppSidebar } from "@/components/right-sidebar";*/}
 
 
 const geistSans = Geist({
@@ -31,13 +32,15 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {/* header */}
-        <SidebarProvider>
-        <AppSidebar />
+        {/*<SidebarProvider>*/}
+        {/*<RightAppSidebar />*/}
+        {/*<AppSidebar />*/}
+        
         <main className="min-h-screen">
-        <SidebarTrigger />
+        {/*<SidebarTrigger />*/}
         {children}
         </main>
-        </SidebarProvider>
+        {/*</SidebarProvider>*/}
         {/* footer */}
         <div className="container mx-auto p-4 text-center text-gray-700">
           <p>Made by Ashreeta Patra</p>

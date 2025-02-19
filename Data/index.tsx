@@ -1,8 +1,8 @@
 import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
 
 // Menu items.
-export const side_fea = [
-    {
+export const sideNavitems = {
+    features:[{
       title: "Home",
       url: "#",
       icon: Home,
@@ -16,10 +16,8 @@ export const side_fea = [
       title: "Collection",
       url: "#",
       icon: Calendar,
-    },
-  ]
-
-  export const side_library = [
+    },],
+    library:[
     {
       title: "Download",
       url: "#",
@@ -34,6 +32,187 @@ export const side_fea = [
       title: "Local Files",
       url: "#",
       icon: Calendar,
-    },
-]
+    },],
+  }
   
+export const musicData = {
+  recents: [
+    {
+      name: "Stairway to Heaven",
+      author: "Led Zeppelin",
+      url: "/",
+      duration: "8:02",
+    },
+    {
+      name: "Bohemian Rhapsody",
+      author: "Queen",
+      url: "/",
+      duration: "5:55",
+    },
+    {
+      name: "Hotel California",
+      author: "Eagles",
+      url: "/",
+      duration: "6:30",
+    },
+    {
+      name: "Smells Like Teen Spirit",
+      author: "Nirvana",
+      url: "/",
+      duration: "5:01",
+    },
+    {
+      name: "Shape of You",
+      author: "Ed Sheeran",
+      url: "/",
+      duration: "3:53",
+    },
+    {
+      name: "Rolling in the Deep",
+      author: "Adele",
+      url: "/",
+      duration: "3:48",
+    },
+    {
+      name: "Billie Jean",
+      author: "Michael Jackson",
+      url: "/",
+      duration: "4:54",
+    },
+    {
+      name: "Dance Monkey",
+      author: "Tones and I",
+      url: "/",
+      duration: "3:30",
+    },
+    {
+      name: "Blinding Lights",
+      author: "The Weeknd",
+      url: "/",
+      duration: "3:20",
+    },
+    {
+      name: "Uptown Funk",
+      author: "Mark Ronson ft. Bruno Mars",
+      url: "/",
+      duration: "4:30",
+    },
+  ],
+  playlists: [
+    {
+      name: "Chill Vibes",
+      pages: [
+        {
+          name: "Lofi Beats",
+          author: "Various Artists",
+          url: "/",
+          duration: "1:00:00",
+        },
+        {
+          name: "Acoustic Sessions",
+          author: "Various Artists",
+          url: "/",
+          duration: "45:30",
+        },
+        {
+          name: "Relaxing Piano",
+          author: "Instrumental",
+          url: "/",
+          duration: "50:15",
+        },
+      ],
+    },
+    {
+      name: "Workout Jams",
+      pages: [
+        {
+          name: "High-Energy Hits",
+          author: "Various Artists",
+          url: "/",
+          duration: "55:00",
+        },
+        {
+          name: "Pump-Up Anthems",
+          author: "Various Artists",
+          url: "/",
+          duration: "48:25",
+        },
+        {
+          name: "Cardio Beats",
+          author: "Various Artists",
+          url: "/",
+          duration: "1:10:00",
+        },
+      ],
+    },
+    {
+      name: "Throwback Classics",
+      pages: [
+        {
+          name: "80s Hits",
+          author: "Various Artists",
+          url: "/",
+          duration: "1:05:00",
+        },
+        {
+          name: "90s Nostalgia",
+          author: "Various Artists",
+          url: "/",
+          duration: "58:30",
+        },
+        {
+          name: "2000s Jams",
+          author: "Various Artists",
+          url: "/",
+          duration: "52:45",
+        },
+      ],
+    },
+    {
+      name: "Road Trip Mix",
+      pages: [
+        {
+          name: "Sing-Along Hits",
+          author: "Various Artists",
+          url: "/",
+          duration: "1:15:00",
+        },
+        {
+          name: "Scenic Drive Tunes",
+          author: "Various Artists",
+          url: "/",
+          duration: "1:20:00",
+        },
+        {
+          name: "Adventure Anthems",
+          author: "Various Artists",
+          url: "/",
+          duration: "1:10:45",
+        },
+      ],
+    },
+    {
+      name: "Late Night Feels",
+      pages: [
+        {
+          name: "Mellow Melodies",
+          author: "Various Artists",
+          url: "/",
+          duration: "1:05:30",
+        },
+        {
+          name: "Soulful Ballads",
+          author: "Various Artists",
+          url: "/",
+          duration: "58:10",
+        },
+        {
+          name: "Dreamy Tunes",
+          author: "Various Artists",
+          url: "/",
+          duration: "1:12:00",
+        },
+      ],
+    },
+  ],
+}
