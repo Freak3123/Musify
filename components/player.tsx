@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import React from 'react';
-import { SIDEBAR_WIDTH } from './ui/sidebar';
 import { Slider } from '@/components/ui/slider';
 import {
     Shuffle,
@@ -24,7 +23,7 @@ interface PlayerProps {
     onPlayPause?: () => void;
 }
 
-const Player = ({ isPlaying = false, onPlayPause = () => {} }: PlayerProps) => {
+const Player = ({ isPlaying = false, onPlayPause = () => { } }: PlayerProps) => {
     return (
         <>
             {/* Album Cover Image */}
@@ -34,7 +33,7 @@ const Player = ({ isPlaying = false, onPlayPause = () => {} }: PlayerProps) => {
                     alt="Album Cover"
                     height={100}
                     width={100}
-                    style={{ height: SIDEBAR_WIDTH, width: SIDEBAR_WIDTH }}
+                    style={{ height: '18vw', width: '18vw' }}
                 />
             </div>
 

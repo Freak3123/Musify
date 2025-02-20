@@ -19,7 +19,7 @@ export function SidebarLeft({
     <Sidebar collapsible="icon" className="border-r-0 " {...props}>
       <SidebarHeader>
         <div className={`flex ${!open&&"flex-col"}  m-2`}>
-            <span className="text-2xl font-bold  text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
+            <span className="text-4xl font-bold  text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
               W
             </span>
           <div className={`flex  w-full justify-end items-center`}>
@@ -29,7 +29,7 @@ export function SidebarLeft({
           </div>
         </div>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className='px-3'>
         <NavSecondary items={sideNavitems} />
       </SidebarContent>
       <SidebarRail />

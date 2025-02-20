@@ -28,15 +28,15 @@ export function NavSecondary({
     <SidebarGroup {...props}>
       {Object.entries(items).map(([groupName, groupItems]) => (
         <SidebarGroup key={groupName}>
-          <SidebarGroupLabel>{groupName}</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-xs">{groupName}</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {groupItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
+                      <item.icon/>
+                      <span  className="text-base">{item.title}</span>
                     </a>
                   </SidebarMenuButton>
                   {item.badge && <SidebarMenuBadge>{item.badge}</SidebarMenuBadge>}

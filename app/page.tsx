@@ -12,13 +12,13 @@ export default function Page() {
   return (
     <>
       <SidebarProvider>
-        <div className="flex h-screen overflow-hidden">
+        <div className="flex h-screen w-full overflow-hidden">
           {/* Left Sidebar */}
-          <SidebarLeft className="h-screen overflow-y-auto" />
+          <SidebarLeft className="h-screen overflow-y-auto w-[18vw]" />
 
           {/* Middle Content */}
           <div className="flex-1 flex flex-col h-screen overflow-hidden">
-            {/* Sticky Header - Fixed at the Top */}
+            {/* Sticky Header */}
             <header className="sticky top-0 p-4 z-10 bg-background flex items-center gap-2 px-3 ">
               <ChevronLeft />
               <ChevronRight />
@@ -26,7 +26,6 @@ export default function Page() {
               <Ellipsis />
             </header>
 
-            {/* Scrollable Content - Doesn't overlap with player */}
             <div className="flex-1 overflow-y-auto pb-[6rem] hide-scrollbar .hide-scrollbar::-webkit-scrollbar">
               <div className="xl:m-4 flex justify-center">
                 <Hero />
@@ -35,7 +34,7 @@ export default function Page() {
           </div>
 
           {/* Right Sidebar */}
-          <SidebarRight className="w-[20rem] p-4 overflow-y-auto pb-[6rem] hide-scrollbar .hide-scrollbar::-webkit-scrollbar" />
+          <SidebarRight className="w-[24vw] p-4 overflow-y-auto pb-[6rem] hide-scrollbar .hide-scrollbar::-webkit-scrollbar" />
         </div>
       </SidebarProvider>
 

@@ -1,11 +1,8 @@
-import { Plus } from "lucide-react";
 import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarMenu,
-  SidebarMenuAction,
-  SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { MusicCard } from "./ui/card";
@@ -42,18 +39,14 @@ export function NavWorkspaces({ workspaces = [] }: NavWorkspacesProps) {
             {workspaces.map(({ name, pages }) =>
               pages.length > 0 ? (
                 <SidebarMenuItem key={name}>
-                  <SidebarMenuButton asChild className="h-full">
                     <MusicCard
                       name={pages[0].name}
                       singer={pages[0].author}
                       duration={pages[0].duration}
                       imageUrl={pages[0].imageUrl}
                     />
-                  </SidebarMenuButton>
-
-                  <SidebarMenuAction showOnHover>
-                    <Plus />
-                  </SidebarMenuAction>
+                  
+                  
                 </SidebarMenuItem>
               ) : null
             )}

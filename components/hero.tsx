@@ -10,7 +10,7 @@ const Hero = () => {
         <div className="flex flex-col gap-4 p-4 w-full">
             {/* Hero Image */}
             <div className="flex justify-center">
-                <div className="relative">
+                <div className="relative w-full h-full">
                     <Image
                         src={"/hero.jpg"}
                         alt={"Hero Image"}

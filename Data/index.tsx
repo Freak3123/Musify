@@ -35,7 +35,7 @@ export const musicList = {
 
 // Menu items.
 export const sideNavitems = {
-    features:[{
+    FEATURES:[{
       title: "Home",
       url: "#",
       icon: Home,
@@ -50,7 +50,7 @@ export const sideNavitems = {
       url: "#",
       icon: Calendar,
     },],
-    library:[
+    LIBRARY:[
     {
       title: "Download",
       url: "#",
@@ -99,6 +99,7 @@ export const musicData = {
       author: "Ed Sheeran",
       url: "/",
       duration: "3:53",
+      audio : "/musicFiles/shapeOfYou.mp3"
     },
     {
       name: "Rolling in the Deep",
@@ -111,24 +112,28 @@ export const musicData = {
       author: "Michael Jackson",
       url: "/",
       duration: "4:54",
+      audio : "/musicFiles/billieJean.mp3"
     },
     {
       name: "Dance Monkey",
       author: "Tones and I",
       url: "/",
       duration: "3:30",
+      audio : "/musicFiles/danceMonkey.mp3"
     },
     {
       name: "Blinding Lights",
       author: "The Weeknd",
       url: "/",
       duration: "3:20",
+      audio : "/musicFiles/blindingLights.mp3"
     },
     {
       name: "Uptown Funk",
       author: "Mark Ronson ft. Bruno Mars",
       url: "/",
       duration: "4:30",
+      audio : "/musicFiles/uptownfunk.mp3"
     },
   ],
   playlists: [
