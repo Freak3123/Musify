@@ -1,4 +1,37 @@
 import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+//current user data
+export const data = {
+  user: {
+    name: "Timothy Luce",
+    email: "m@example.com",
+    avatar: "/avatars/shadcn.jpg",
+  },
+}
+
+export const musicList = {
+  "songs": [
+    {
+      "name": "Stairway to Heaven",
+      "author": "Led Zeppelin"
+    },
+    {
+      "name": "Bohemian Rhapsody",
+      "author": "Queen"
+    },
+    {
+      "name": "Hotel California",
+      "author": "Eagles"
+    },
+    {
+      "name": "Smells Like Teen Spirit",
+      "author": "Nirvana"
+    },
+    {
+      "name": "Shape of You",
+      "author": "Ed Sheeran"
+    }
+  ]
+}
 
 // Menu items.
 export const sideNavitems = {

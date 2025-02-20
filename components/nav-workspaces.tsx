@@ -1,9 +1,7 @@
-import { ChevronRight, MoreHorizontal, Plus } from "lucide-react"
+import { Plus } from "lucide-react"
 
 import {
   Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
 } from "@/components/ui/collapsible"
 import {
   SidebarGroup,
@@ -13,68 +11,46 @@ import {
   SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
+import { MusicCard } from "./ui/card"
 
 export function NavWorkspaces({
   workspaces,
 }: {
   workspaces: {
     name: string
-    emoji: React.ReactNode
     pages: {
       name: string
-      emoji: React.ReactNode
+      author: string
+      url: string
+      duration: string
     }[]
   }[]
 }) {
   return (
     <SidebarGroup>
       <SidebarGroupLabel className="text-base">
-        Playlists
-        <SidebarMenuButton className="text-sidebar-foreground/70">
-        <MoreHorizontal className="flex justify-end"/>
-        <span>See all</span>
-        </SidebarMenuButton>
+        <div className="w-full">
+          Recently Played
+        </div>
+        <div className="flex justify-end w-full">
+          <button className="flex justify-end hover:text-gray-950 dark:hover:text-gray-200 transition-all duration-300">
+            See all
+          </button>
+        </div>
       </SidebarGroupLabel>
       <SidebarGroupContent>
         <SidebarMenu>
           {workspaces.map((workspace) => (
             <Collapsible key={workspace.name}>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <a href="#">
-                    <span>{workspace.emoji}</span>
-                    <span>{workspace.name}</span>
-                  </a>
+                <SidebarMenuButton asChild className="">
+                  <MusicCard name={workspace.name} />
                 </SidebarMenuButton>
-                <CollapsibleTrigger asChild>
-                  <SidebarMenuAction
-                    className="left-2 bg-sidebar-accent text-sidebar-accent-foreground data-[state=open]:rotate-90"
-                    showOnHover
-                  >
-                    <ChevronRight />
-                  </SidebarMenuAction>
-                </CollapsibleTrigger>
+
                 <SidebarMenuAction showOnHover>
                   <Plus />
                 </SidebarMenuAction>
-                <CollapsibleContent>
-                  <SidebarMenuSub>
-                    {workspace.pages.map((page) => (
-                      <SidebarMenuSubItem key={page.name}>
-                        <SidebarMenuSubButton asChild>
-                          <a href="#">
-                            <span>{page.emoji}</span>
-                            <span>{page.name}</span>
-                          </a>
-                        </SidebarMenuSubButton>
-                      </SidebarMenuSubItem>
-                    ))}
-                  </SidebarMenuSub>
-                </CollapsibleContent>
               </SidebarMenuItem>
             </Collapsible>
           ))}

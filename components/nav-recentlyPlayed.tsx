@@ -41,17 +41,20 @@ export function NavRecentlyPlayed({
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
       <SidebarGroupLabel className="text-base">
-        Recently Played
-        <SidebarMenuButton className="text-sidebar-foreground/70">
-        <MoreHorizontal className="flex justify-end"/>
-        <span>See all</span>
-        </SidebarMenuButton>
+        <div className="w-full">
+          Recently Played
+        </div>
+        <div className="flex justify-end w-full">
+          <button className="flex justify-end hover:text-gray-950 dark:hover:text-gray-200 transition-all duration-300">
+            See all
+          </button>
+        </div>
       </SidebarGroupLabel>
       <SidebarMenu>
         {favorites.map((item) => (
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton asChild>
-              <MusicCard name={item.name} singer={item.author} imageUrl={item.url} duration={item.duration} />
+              <MusicCard name={item.name} singer={item.author} duration={item.duration} />
             </SidebarMenuButton>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

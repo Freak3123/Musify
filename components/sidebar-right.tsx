@@ -12,15 +12,7 @@ import {
 import { NavRecentlyPlayed } from "./nav-recentlyPlayed"
 import { NavWorkspaces } from "./nav-workspaces"
 import { Button } from "./ui/button"
-
-// This is sample data.
-const data = {
-  user: {
-    name: "Timothy Luce",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
-}
+import { data } from "@/Data"
 
 export function SidebarRight({
   ...props
@@ -28,21 +20,20 @@ export function SidebarRight({
   return (
     <Sidebar
       collapsible="none"
-      className="sticky hidden lg:flex top-0 h-svh border-l"
+      className=" xl:w-[20%] lg:w-[30%]  right-0 top-0  lg:flex  h-svh border-l"
       {...props}
     >
       <SidebarHeader className="h-16 border-b border-sidebar-border">
         <NavUser user={data.user} />
       </SidebarHeader>
       <SidebarContent>
-        <NavRecentlyPlayed favorites={musicData.recents} />
+        <NavRecentlyPlayed favorites={musicData.recents.slice(6)} />
         <NavWorkspaces workspaces={musicData.playlists} />
         <SidebarMenu>
           <SidebarMenuItem className="flex justify-center">
               <Button className="w-[85%] text-base rounded-lg">
                 Create New Playlist
               </Button>
-            
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarContent>
