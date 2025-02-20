@@ -39,7 +39,7 @@ export function NavRecentlyPlayed({
   const { isMobile } = useSidebar()
 
   return (
-    <SidebarGroup className="group-data-[collapsible=icon]:hidden">
+    <SidebarGroup className="pt-4 group-data-[collapsible=icon]:hidden">
       <SidebarGroupLabel className="text-base">
         <div className="w-full">
           Recently Played
@@ -50,7 +50,7 @@ export function NavRecentlyPlayed({
           </button>
         </div>
       </SidebarGroupLabel>
-      <SidebarMenu>
+      <SidebarMenu className="gap-2">
         {favorites.map((item) => (
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton asChild>

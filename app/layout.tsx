@@ -32,9 +32,9 @@ export default function RootLayout({
         {children}
         </main>
         {/* footer */}
-        {/*<div className="container mx-auto p-4 text-center text-gray-700">
+        {/* <div className="container mx-auto p-24 text-center text-gray-700">
           <p>Made by Ashreeta Patra</p>
-        </div>*/}
+        </div> */}
       </body>
     </html>
   );

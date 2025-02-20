@@ -1,21 +1,34 @@
-'use client'
+'use client';
 
-import Image from 'next/image'
-import React from 'react'
-import { SIDEBAR_WIDTH } from './ui/sidebar'
-import { Slider } from "@/components/ui/slider"
-import { Shuffle, SkipBack, Play, Pause, SkipForward, Repeat } from 'lucide-react'
+import Image from 'next/image';
+import React from 'react';
+import { SIDEBAR_WIDTH } from './ui/sidebar';
+import { Slider } from '@/components/ui/slider';
+import {
+    Shuffle,
+    SkipBack,
+    Play,
+    Pause,
+    SkipForward,
+    Repeat,
+    Heart,
+    SquarePlus,
+    Share2,
+    Volume2,
+    Mic2,
+    MonitorSmartphone,
+} from 'lucide-react';
 
 interface PlayerProps {
-    isPlaying?: boolean
-    onPlayPause?: () => void
+    isPlaying?: boolean;
+    onPlayPause?: () => void;
 }
 
-const Player = ({ isPlaying = false, onPlayPause = () => { } }: PlayerProps) => {
+const Player = ({ isPlaying = false, onPlayPause = () => {} }: PlayerProps) => {
     return (
         <>
             {/* Album Cover Image */}
-            <div className="absolute bottom-24 z-50">
+            <div className="fixed bottom-24 z-50">
                 <Image
                     src="/music_cover.jpg"
                     alt="Album Cover"
@@ -26,38 +39,72 @@ const Player = ({ isPlaying = false, onPlayPause = () => { } }: PlayerProps) => 
             </div>
 
             {/* Music Player Controls */}
-            <div className="fixed  bottom-0 w-full h-24 bg-slate-400 z-40  px-6">
-                <div className='h-full flex flex-col items-center'>
-                    {/* Control Buttons */}
-                    <div className="flex justify-center h-full gap-6">
-                        {[
-                            { Icon: Shuffle, label: 'Shuffle' },
-                            { Icon: SkipBack, label: 'Previous Track' },
-                            { Icon: isPlaying ? Pause : Play, label: isPlaying ? 'Pause' : 'Play', onClick: onPlayPause, size: 'w-6 h-6' },
-                            { Icon: SkipForward, label: 'Next Track' },
-                            { Icon: Repeat, label: 'Repeat' }
-                        ].map(({ Icon, label, onClick, size = 'w-5 h-5' }) => (
-                            <button
-                                key={label}
-                                className="text-gray-600 hover:text-gray-900"
-                                aria-label={label}
-                                title={label}
-                                onClick={onClick}
-                            >
-                                <Icon className={size} />
-                            </button>
-                        ))}
+            <div className="fixed bottom-0 w-full h-24 bg-white text-black z-40 px-6 flex items-center justify-between border-t border-black/10 shadow-lg">
+                {/* Song Info */}
+                <div className="flex items-center gap-4 w-[20%] min-w-[180px]">
+                    <div>
+                        <h3 className="font-medium truncate cursor-pointer hover:underline">Song Name</h3>
+                        <p className="text-black/70 text-sm truncate cursor-pointer hover:underline">Artist Name</p>
+                    </div>
+                    <Heart className="w-5 h-5 text-black/70 cursor-pointer hover:text-black" />
+                    <SquarePlus className="w-5 h-5 text-black/70 cursor-pointer hover:text-black" />
+                </div>
+
+                {/* Playback Controls */}
+                <div className="flex flex-col items-center gap-2 flex-1 max-w-full sm:max-w-[45%]">
+                    <div className="flex items-center gap-4 sm:gap-6">
+                        <button className="hover:text-black" title="Shuffle">
+                            <Shuffle className="h-4 w-4" />
+                        </button>
+
+                        <button className="hover:text-black" title="Previous Track">
+                            <SkipBack className="h-4 w-4" />
+                        </button>
+
+                        {/* Play Button */}
+                        <button
+                            className="bg-black rounded-full h-10 w-10 flex items-center justify-center hover:bg-black/80"
+                            onClick={onPlayPause}
+                            title={isPlaying ? 'Pause' : 'Play'}
+                        >
+                            {isPlaying ? (
+                                <Pause className="h-5 w-5 text-white" />
+                            ) : (
+                                <Play className="h-5 w-5 text-white" />
+                            )}
+                        </button>
+
+                        <button className="hover:text-black" title="Next Track">
+                            <SkipForward className="h-4 w-4" />
+                        </button>
+
+                        <button className="hover:text-black" title="Repeat">
+                            <Repeat className="h-4 w-4" />
+                        </button>
                     </div>
 
-                    {/* Volume/Progress Slider */}
-                    <div className="mx-4 w-1/2 h-full">
-                        <Slider defaultValue={[0]} max={100} step={1} />
+                    {/* Progress Slider */}
+                    <div className="flex items-center gap-2 w-full">
+                        <div className="text-xs text-black/70">0:00</div>
+                        <Slider defaultValue={[0]} max={100} step={1} className="w-full" />
+                        <div className="text-xs text-black/70">3:45</div>
                     </div>
                 </div>
+
+                {/* Volume + Icons */}
+                <div className="flex items-center gap-4 justify-end">
+                    {/* Volume Controls */}
+                    <Volume2 className="w-5 h-5 cursor-pointer text-black/70 hover:text-black" />
+                    <Slider defaultValue={[50]} max={100} step={1} className="w-24" />
+
+                    {/* Icons */}
+                    <Mic2 className="w-5 h-5 cursor-pointer text-black/70 hover:text-black" />
+                    <MonitorSmartphone className="w-5 h-5 cursor-pointer text-black/70 hover:text-black" />
+                    <Share2 className="w-5 h-5 cursor-pointer text-black/70 hover:text-black" />
+                </div>
             </div>
-
         </>
-    )
-}
+    );
+};
 
-export default Player
+export default Player;
