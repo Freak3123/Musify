@@ -11,12 +11,12 @@ import Player from "@/components/player";
 export default function Page() {
   return (
     <>
-      <SidebarProvider width="18vw">
+      <SidebarProvider width="18vw" className="">
         <div className="flex h-screen w-full overflow-hidden">
           {/* Left Sidebar */}
-          <SidebarLeft className="shrink-0 w-[18vw]" />
+          <SidebarLeft className="shrink-0  w-[18vw]" />
           {/* Middle Content */}
-          <div className="flex flex-1 flex-col overflow-hidden">
+          <div className="flex flex-1  flex-col overflow-hidden">
             {/* Sticky Header */}
             <header className="sticky top-0 p-4 z-10 bg-background flex items-center gap-2 px-3 ">
               <ChevronLeft />
