@@ -1,21 +1,35 @@
+"use client"
 import React from "react"
 import Image from "next/image"
-import {useState, useEffect, useRef} from "react"
+
+
 
 type MusicCardProps = {
   imageUrl?: string
   name?: string
   singer?: string
-  duration?: string
+  duration?: string,
+  song?:string,
 }
 
 export function BigMusicCard({
   imageUrl = "/music_cover.jpg", // Default image URL (ensure this exists in the public folder)
   name = "Unknown Track",
   singer = "Unknown Artist",
+  song
 }: MusicCardProps) {
+
+  const handleClick = () => {
+    const event = new CustomEvent("songSelected", {detail: {audio: song} });
+    window.dispatchEvent(event);
+};
+
+
+  
+
+
   return (
-    <div className="rounded-md shadow-lg overflow-hidden">
+    <div onClick={handleClick} className="rounded-md shadow-lg overflow-hidden">
       {/* Image */}
       <div className="relative aspect-square w-full">
         <Image

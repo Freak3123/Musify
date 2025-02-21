@@ -1,5 +1,5 @@
 'use client';
-
+import { useState, useEffect, useRef } from "react";
 import Image from 'next/image';
 import React from 'react';
 import { Slider } from '@/components/ui/slider';
@@ -18,12 +18,88 @@ import {
     MonitorSmartphone,
 } from 'lucide-react';
 
-interface PlayerProps {
-    isPlaying?: boolean;
-    onPlayPause?: () => void;
-}
 
-const Player = ({ isPlaying = false, onPlayPause = () => { } }: PlayerProps) => {
+
+const Player = () => {
+
+    const [currentSong, setCurrentSong] = useState(null);
+    const [isPlayingRN, setIsPlayingRN] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const audioRef = useRef(null);
+    const [progress, setProgress] = useState(0);
+
+    useEffect(() => {
+        const handleSongSelection = (event: any) => {
+            setCurrentSong(event.detail);
+            setIsPlayingRN(true);
+            setIsPlaying(true);
+
+        };
+
+        window.addEventListener("songSelected", handleSongSelection);
+        return () => {
+            window.removeEventListener("songSelected", handleSongSelection);
+        };
+    }, []);
+
+
+    useEffect(() => {
+        if (audioRef.current) {
+            if (isPlayingRN) {
+                audioRef.current.play();
+                setIsPlaying(true);
+
+            } else {
+                audioRef.current.pause();
+                setIsPlaying(false);
+
+            }
+        }
+    }, [isPlayingRN, currentSong]);
+    useEffect(() => {
+        const updateProgress = () => {
+            if (audioRef.current) {
+                setProgress((audioRef.current.currentTime / audioRef.current.duration) * 100);
+            }
+        };
+
+        if (audioRef.current) {
+            audioRef.current.addEventListener("timeupdate", updateProgress);
+        }
+
+        return () => {
+            if (audioRef.current) {
+                audioRef.current.removeEventListener("timeupdate", updateProgress);
+            }
+        };
+    }, [currentSong]);
+
+    const handleSeek = (value: number[]) => {
+        if (audioRef.current) {
+            audioRef.current.currentTime = (value[0] / 100) * audioRef.current.duration;
+            setProgress(value[0]); // Sync UI
+        }
+    };
+
+
+
+    const handleVolumeChange = (value: number[]) => {
+        if (audioRef.current) {
+            audioRef.current.volume = value[0] / 100; // Range 0-1
+        }
+    };
+    const formatTime = (seconds: number) => {
+        if (isNaN(seconds)) return "0:00";
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
+    };
+
+
+
+
+
+
     return (
         <>
             {/* Album Cover Image */}
@@ -60,10 +136,11 @@ const Player = ({ isPlaying = false, onPlayPause = () => { } }: PlayerProps) => 
                             <SkipBack className="h-4 w-4" />
                         </button>
 
+                        <audio ref={audioRef} src={currentSong?.audio ? currentSong.audio : null} />
                         {/* Play Button */}
                         <button
                             className="bg-black rounded-full h-10 w-10 flex items-center justify-center hover:bg-black/80"
-                            onClick={onPlayPause}
+                            onClick={() => { setIsPlayingRN(!isPlayingRN) }}
                             title={isPlaying ? 'Pause' : 'Play'}
                         >
                             {isPlaying ? (
@@ -85,8 +162,12 @@ const Player = ({ isPlaying = false, onPlayPause = () => { } }: PlayerProps) => 
                     {/* Progress Slider */}
                     <div className="flex items-center gap-2 w-full">
                         <div className="text-xs text-black/70">0:00</div>
-                        <Slider defaultValue={[0]} max={100} step={1} className="w-full" />
-                        <div className="text-xs text-black/70">3:45</div>
+                        <Slider value={[progress]}
+                            max={100}
+                            step={1}
+                            className="w-full"
+                            onValueChange={handleSeek} />
+                        <div className="text-xs text-black/70"> {audioRef.current ? formatTime(audioRef.current.currentTime) : "0:00"}</div>
                     </div>
                 </div>
 
@@ -94,7 +175,7 @@ const Player = ({ isPlaying = false, onPlayPause = () => { } }: PlayerProps) => 
                 <div className="flex items-center gap-4 justify-end">
                     {/* Volume Controls */}
                     <Volume2 className="w-5 h-5 cursor-pointer text-black/70 hover:text-black" />
-                    <Slider defaultValue={[50]} max={100} step={1} className="w-24" />
+                    <Slider defaultValue={[50]} max={100} step={1} onValueChange={handleVolumeChange} className="w-24" />
 
                     {/* Icons */}
                     <Mic2 className="w-5 h-5 cursor-pointer text-black/70 hover:text-black" />

@@ -1,11 +1,14 @@
+"use client"
 import React from "react"
 import Image from "next/image"
-import { data, musicList } from "@/Data"
+import { data, musicData, } from "@/Data"
 import { BigMusicCard } from "./ui/card" // Import BigMusicCard
 
-const musicList1 = musicList.songs.slice(0, 4)
+
+const musicList1 = musicData.recents.slice(0, 4)
 
 const Hero = () => {
+
     return (
         <div className="flex flex-col gap-4 p-4 w-full">
             {/* Hero Image */}
@@ -31,6 +34,7 @@ const Hero = () => {
                                     name={song.name}
                                     singer={song.author}
                                     imageUrl="/music_cover.jpg"
+                                    song={song?.audio}
                                 />
                             </div>
                         ))}

@@ -70,30 +70,30 @@ export const sideNavitems = {
   
 export const musicData = {
   recents: [
-    {
-      name: "Stairway to Heaven",
-      author: "Led Zeppelin",
-      url: "/",
-      duration: "8:02",
-    },
-    {
-      name: "Bohemian Rhapsody",
-      author: "Queen",
-      url: "/",
-      duration: "5:55",
-    },
-    {
-      name: "Hotel California",
-      author: "Eagles",
-      url: "/",
-      duration: "6:30",
-    },
-    {
-      name: "Smells Like Teen Spirit",
-      author: "Nirvana",
-      url: "/",
-      duration: "5:01",
-    },
+    // {
+    //   name: "Stairway to Heaven",
+    //   author: "Led Zeppelin",
+    //   url: "/",
+    //   duration: "8:02",
+    // },
+    // {
+    //   name: "Bohemian Rhapsody",
+    //   author: "Queen",
+    //   url: "/",
+    //   duration: "5:55",
+    // },
+    // {
+    //   name: "Hotel California",
+    //   author: "Eagles",
+    //   url: "/",
+    //   duration: "6:30",
+    // },
+    // {
+    //   name: "Smells Like Teen Spirit",
+    //   author: "Nirvana",
+    //   url: "/",
+    //   duration: "5:01",
+    // },
     {
       name: "Shape of You",
       author: "Ed Sheeran",
@@ -101,12 +101,12 @@ export const musicData = {
       duration: "3:53",
       audio : "/musicFiles/shapeOfYou.mp3"
     },
-    {
-      name: "Rolling in the Deep",
-      author: "Adele",
-      url: "/",
-      duration: "3:48",
-    },
+    // {
+    //   name: "Rolling in the Deep",
+    //   author: "Adele",
+    //   url: "/",
+    //   duration: "3:48",
+    // },
     {
       name: "Billie Jean",
       author: "Michael Jackson",

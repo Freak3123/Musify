@@ -29,7 +29,7 @@ export default function RootLayout({
       >
         {/* header */}  
         <main className="min-h-screen">
-        {children}
+    {children}
         </main>
         {/* footer */}
         {/* <div className="container mx-auto p-24 text-center text-gray-700">
