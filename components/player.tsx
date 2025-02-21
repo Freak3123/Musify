@@ -26,11 +26,11 @@ const Player = () => {
             setCurrentSong(customEvent.detail);
             setIsPlaying(true);
         };
-    
+
         window.addEventListener("songSelected", handleSongSelection);
         return () => window.removeEventListener("songSelected", handleSongSelection);
     }, []);
-    
+
     // Play or pause audio when `isPlaying` or `currentSong` changes
     useEffect(() => {
         if (audioRef.current) {
@@ -71,7 +71,7 @@ const Player = () => {
             audioRef.current.loop = isRepeating;
         }
     }, [isRepeating]);
-    
+
     return (
         <>
             {/* Album Cover Image */}
@@ -86,29 +86,29 @@ const Player = () => {
             </div>
 
             {/* Music Player Controls */}
-            <div className="fixed bottom-0 w-full h-24 bg-white text-black z-40 px-6 flex items-center justify-between border-t border-black/10 shadow-lg">
+            <div className="fixed bottom-0 w-full h-24 bg-white dark:bg-zinc-950 text-black z-40 px-6 flex items-center justify-between border-t border-black/10 shadow-lg">
                 {/* Song Info */}
                 <div className="flex items-center gap-4 w-[20%] min-w-[180px]">
                     <div>
-                        <h3 className="font-medium truncate cursor-pointer hover:underline">
+                        <h3 className="font-medium dark:text-white truncate cursor-pointer hover:underline">
                             {currentSong?.name || "Song Name"}
                         </h3>
-                        <p className="text-black/70 text-sm truncate cursor-pointer hover:underline">
+                        <p className="text-black/70 dark:text-white text-sm truncate cursor-pointer hover:underline">
                             {currentSong?.author || "Artist Name"}
                         </p>
                     </div>
-                    <Heart className="w-5 h-5 text-black/70 cursor-pointer hover:text-black" />
-                    <SquarePlus className="w-5 h-5 text-black/70 cursor-pointer hover:text-black" />
+                    <Heart className="w-5 h-5 dark:text-white text-black/70 cursor-pointer hover:text-black" />
+                    <SquarePlus className="w-5 h-5 dark:text-white text-black/70 cursor-pointer hover:text-black" />
                 </div>
 
                 {/* Playback Controls */}
                 <div className="flex flex-col items-center gap-2 flex-1 max-w-full sm:max-w-[45%]">
                     <div className="flex items-center gap-4 sm:gap-6">
-                        <button className="hover:text-black" title="Shuffle">
+                        <button className="hover:text-black dark:text-white" title="Shuffle">
                             <Shuffle className="h-4 w-4" />
                         </button>
 
-                        <button className="hover:text-black" title="Previous Track">
+                        <button className="hover:text-black dark:text-white" title="Previous Track">
                             <SkipBack className="h-4 w-4" />
                         </button>
 
@@ -121,34 +121,34 @@ const Player = () => {
 
                         {/* Play/Pause Button */}
                         <button
-                            className="bg-black rounded-full h-10 w-10 flex items-center justify-center hover:bg-black/80"
+                            className="bg-black  dark:bg-white rounded-full h-10 w-10 flex items-center justify-center hover:bg-black/80"
                             onClick={() => setIsPlaying(!isPlaying)}
                             title={isPlaying ? 'Pause' : 'Play'}
                         >
                             {isPlaying ? (
-                                <Pause className="h-5 w-5 text-white" />
+                                <Pause className="h-5 w-5 text-white dark:text-black" />
                             ) : (
-                                <Play className="h-5 w-5 text-white" />
+                                <Play className="h-5 w-5 text-white dark:text-black" />
                             )}
                         </button>
 
                         <button className="hover:text-black" title="Next Track">
-                            <SkipForward className="h-4 w-4" />
+                            <SkipForward className="h-4 w-4 dark:text-white" />
                         </button>
 
-                        <button 
-    className={`hover:text-black ${isRepeating ? 'text-black' : 'text-black/70'}`} 
-    title="Repeat" 
-    onClick={() => setIsRepeating(!isRepeating)}
->
-    <Repeat className="h-4 w-4" />
-</button>
+                        <button
+                            className={`hover:text-black ${isRepeating ? 'text-black' : 'text-black/70'} dark:text-white`}
+                            title="Repeat"
+                            onClick={() => setIsRepeating(!isRepeating)}
+                        >
+                            <Repeat className="h-4 w-4 dark:text-white" />
+                        </button>
 
                     </div>
 
                     {/* Progress Slider */}
-                    <div className="flex items-center gap-2 w-full">
-                        <div className="text-xs text-black/70">
+                    <div className="flex dark:text-white items-center gap-2 w-full">
+                        <div className="text-xs dark:text-white text-black/70">
                             {audioRef.current ? formatTime(audioRef.current.currentTime) : "0:00"}
                         </div>
                         <Slider
@@ -158,20 +158,20 @@ const Player = () => {
                             className="w-full"
                             onValueChange={handleSeek}
                         />
-                        <div className="text-xs text-black/70">
+                        <div className="text-xs dark:text-white text-black/70">
                             {audioRef.current ? formatTime(audioRef.current.duration) : "0:00"}
                         </div>
                     </div>
                 </div>
 
                 {/* Volume + Icons */}
-                <div className="flex items-center gap-4 justify-end">
-                    <Volume2 className="w-5 h-5 cursor-pointer text-black/70 hover:text-black" />
+                <div className="flex dark:text-white items-center gap-4 justify-end">
+                    <Volume2 className="w-5 h-5 dark:text-white cursor-pointer text-black/70 hover:text-black" />
                     <Slider defaultValue={[50]} max={100} step={1} onValueChange={handleVolumeChange} className="w-24" />
-                    <ThemeChanger/>
-                    <Mic2 className="w-5 h-5 cursor-pointer text-black/70 hover:text-black" />
-                    <MonitorSmartphone className="w-5 h-5 cursor-pointer text-black/70 hover:text-black" />
-                    <Share2 className="w-5 h-5 cursor-pointer text-black/70 hover:text-black" />
+                    <ThemeChanger />
+                    <Mic2 className="w-5 dark:text-white h-5 cursor-pointer text-black/70 hover:text-black" />
+                    <MonitorSmartphone className="w-5 dark:text-white h-5 cursor-pointer text-black/70 hover:text-black" />
+                    <Share2 className="w-5 h-5 cursor-pointer dark:text-white text-black/70 hover:text-black" />
                 </div>
             </div>
         </>

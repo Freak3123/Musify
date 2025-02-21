@@ -11,25 +11,25 @@ type MusicCardProps = {
   name?: string
   singer?: string
   duration?: string,
-  song?:typeof musicData.recents[0]
+  song?: typeof musicData.recents[0]
 }
 
 export function BigMusicCard({
   imageUrl = "/music_cover.jpg", // Default image URL (ensure this exists in the public folder)
   name = "Unknown Track",
   singer = "Unknown Artist",
-  song 
+  song
 }: MusicCardProps) {
 
   const handleClick = () => {
     if (typeof window !== "undefined") {
-      const event = new CustomEvent("songSelected", { detail: song  });
+      const event = new CustomEvent("songSelected", { detail: song });
       window.dispatchEvent(event);
-  }
-};
+    }
+  };
 
 
-  
+
 
 
   return (
@@ -59,24 +59,24 @@ export function MusicCard({
   singer = "Unknown Artist",
   duration = "00:00",
 }: MusicCardProps) {
-  function sliceMe(str:string){
-    if (str.length>=18){
-      return str.slice(0,18)+"..."
-    } else{
+  function sliceMe(str: string) {
+    if (str.length >= 18) {
+      return str.slice(0, 18) + "..."
+    } else {
       return str
     }
   }
   return (
-    <div className="flex items-center overflow-hidden rounded-lg bg-white shadow-md hover:shadow-lg transition-shadow duration-300 h-14">
+    <div className="flex  items-center overflow-hidden rounded-lg dark:bg-zinc-950 bg-white shadow-md hover:shadow-lg transition-shadow duration-300 h-14">
       {/* Left: Music Image */}
       <div className="w-14 h-14 relative flex-shrink-0">
         <Image src={imageUrl} alt={name} fill className="object-cover rounded-l-lg" />
       </div>
 
       {/* Right: Music Details */}
-      <div className="flex justify-between items-center w-full ml-4 pr-4">
-        <div className="min-w-0 max-w-[60%] flex justify-start flex-col">
-          <h3 className="text-sm font-semibold text-gray-900 truncate">{name}</h3>
+      <div className="flex dark:bg-zinc-950 justify-between items-center w-full ml-4 pr-4">
+        <div className="min-w-0 max-w-[60%] flex justify-start  flex-col">
+          <h3 className="text-sm dark:text-white font-semibold text-gray-900 truncate">{name}</h3>
           <p className="text-xs text-gray-500 truncate">{sliceMe(singer)}</p>
         </div>
         <div className="flex justify-end">
