@@ -22,7 +22,7 @@ const Hero = () => {
         ))
 
     return (
-        <div className="flex flex-col gap-4 p-4">
+        <div className="flex  flex-col gap-4 p-4">
             {/* Hero Image */}
             <div className="flex justify-center">
                 <div className="relative w-full h-full">

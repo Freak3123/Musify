@@ -6,6 +6,7 @@ import {
     Shuffle, SkipBack, Play, Pause, SkipForward, Repeat,
     Heart, SquarePlus, Share2, Volume2, Mic2, MonitorSmartphone
 } from 'lucide-react';
+import ThemeChanger from "./ThemeChanger";
 
 const Player = () => {
     type Song = {
@@ -167,6 +168,7 @@ const Player = () => {
                 <div className="flex items-center gap-4 justify-end">
                     <Volume2 className="w-5 h-5 cursor-pointer text-black/70 hover:text-black" />
                     <Slider defaultValue={[50]} max={100} step={1} onValueChange={handleVolumeChange} className="w-24" />
+                    <ThemeChanger/>
                     <Mic2 className="w-5 h-5 cursor-pointer text-black/70 hover:text-black" />
                     <MonitorSmartphone className="w-5 h-5 cursor-pointer text-black/70 hover:text-black" />
                     <Share2 className="w-5 h-5 cursor-pointer text-black/70 hover:text-black" />
