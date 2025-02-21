@@ -23,7 +23,7 @@ const Player = () => {
     useEffect(() => {
         const handleSongSelection = (event: Event) => {
             const customEvent = event as CustomEvent<Song>;
-            setCurrentSong(customEvent.detail.audio);
+            setCurrentSong(customEvent.detail);
             setIsPlaying(true);
         };
     

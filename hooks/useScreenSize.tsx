@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
 
 export const useScreenSize = () => {
-  const [isXl, setIsXl] = useState(window.innerWidth >= 1280); // Tailwind's `xl` breakpoint is 1280px
+  const [isXl, setIsXl] = useState(
+    typeof window !== "undefined" && window.innerWidth >= 1280
+  );
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsXl(window.innerWidth >= 1280);
-    };
+    if (typeof window !== "undefined") {
+      const handleResize = () => {
+        setIsXl(window.innerWidth >= 1280);
+      };
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
   }, []);
 
   return isXl;

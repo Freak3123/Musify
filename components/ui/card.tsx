@@ -11,7 +11,7 @@ type MusicCardProps = {
   name?: string
   singer?: string
   duration?: string,
-  song?:typeof musicData.recents
+  song?:typeof musicData.recents[0]
 }
 
 export function BigMusicCard({
@@ -22,8 +22,10 @@ export function BigMusicCard({
 }: MusicCardProps) {
 
   const handleClick = () => {
-    const event = new CustomEvent("songSelected", {detail: {audio: song} });
-    window.dispatchEvent(event);
+    if (typeof window !== "undefined") {
+      const event = new CustomEvent("songSelected", { detail: song  });
+      window.dispatchEvent(event);
+  }
 };
 
 
