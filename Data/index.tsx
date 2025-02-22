@@ -3,8 +3,8 @@ import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
 export const data = {
   user: {
     name: "Timothy Luce",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    email: "justa@example.com",
+    avatar: "/image.png",
   },
 }
 

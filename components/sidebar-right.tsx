@@ -16,18 +16,18 @@ import { data } from "@/Data";
 
 export function SidebarRight(props: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="none" className="p-4" {...props}>
-      <SidebarHeader className="h-16 border-b border-sidebar-border">
+    <Sidebar collapsible="none" {...props}>
+      <SidebarHeader>
         <NavUser user={data.user} />
       </SidebarHeader>
 
-      <SidebarContent>
+      <SidebarContent className="gap-5 px-4">
         <NavRecentlyPlayed favorites={musicData.recents.slice(6)} />
-        <NavWorkspaces workspaces={musicData.playlists} />
+        <NavWorkspaces workspaces={musicData.playlists.slice(1)} />
 
         <SidebarMenu>
           <SidebarMenuItem className="flex justify-center">
-            <Button className="w-[85%] text-base rounded-lg">Create New Playlist</Button>
+            <Button className="w-[90%] text-sm font-semibold hover:bg-blue-600 max-w-64 mt-4 rounded-md">Create New Playlist</Button>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarContent>

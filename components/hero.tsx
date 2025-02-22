@@ -16,7 +16,7 @@ const Hero = () => {
                     name={song.name}
                     singer={song.author}
                     imageUrl="/music_cover.jpg"
-                    song={song } // Default audio
+                    song={song} // Default audio
                 />
             </div>
         ))
@@ -38,7 +38,13 @@ const Hero = () => {
 
             {/* Welcome Section */}
             <div>
-                <h1 className="py-2 text-lg xl:text-xl font-bold">Hello, {data.user.name}</h1>
+                <h1 className="flex justify-between py-2 text-lg xl:text-2xl font-bold">
+                    <span>Hello, {data.user.name}</span>
+                    <button
+                        className="hover:text-gray-950 dark:hover:text-gray-200 text-gray-500 text-xs xl:text-sm transition-all duration-300">
+                        See all
+                    </button>
+                </h1>
                 <div className="overflow-x-auto w-full no-scrollbar">
                     <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                         {renderMusicCards(musicData.recents)}
@@ -48,7 +54,11 @@ const Hero = () => {
 
             {/* New Releases Section */}
             <div>
-                <h1 className="py-2 text-md xl:text-xl font-bold">New releases for you</h1>
+                <h1 className="flex justify-between py-2 text-md xl:text-2xl font-bold"><span>New releases for you</span>
+                    <button
+                        className="hover:text-gray-950 dark:hover:text-gray-200 text-gray-500 text-xs xl:text-sm transition-all duration-300">
+                        See all
+                    </button></h1>
                 <div className="overflow-x-auto w-full no-scrollbar">
                     <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                         {renderMusicCards(musicData.recents)}

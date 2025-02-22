@@ -48,62 +48,74 @@ export function NavUser({
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
               size="lg"
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground p-5 rounded-lg gap-3 text-base"
             >
-              <Avatar className="h-8 w-8 rounded-lg">
+              <Avatar className="h-10 w-10 rounded-lg">
                 <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                <AvatarFallback className="rounded-lg text-lg">CN</AvatarFallback>
               </Avatar>
-              <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-semibold">{user.name}</span>
-                <span className="truncate text-xs">{user.email}</span>
+
+              <div className="grid flex-1 text-left leading-tight">
+                <span className="truncate text-base font-semibold">{user.name}</span>
+                <span className="truncate text-sm text-gray-500">{user.email}</span>
               </div>
-              <ChevronsUpDown className="ml-auto size-4" />
+
+              <Bell className="size-5 text-gray-500 hover:text-blue-500 transition-colors cursor-pointer" />
+
+              <ChevronsUpDown className="ml-3 size-5 text-gray-500" />
             </SidebarMenuButton>
+
           </DropdownMenuTrigger>
+
           <DropdownMenuContent
-            className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+            className="w-[--radix-dropdown-menu-trigger-width] min-w-64 rounded-lg"
             side={isMobile ? "bottom" : "right"}
             align="start"
-            sideOffset={4}
+            sideOffset={6}
           >
             <DropdownMenuLabel className="p-0 font-normal">
-              <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                <Avatar className="h-8 w-8 rounded-lg">
+              <div className="flex items-center gap-3 px-3 py-2 text-left">
+                <Avatar className="h-10 w-10 rounded-lg">
                   <AvatarImage src={user.avatar} alt={user.name} />
-                  <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                  <AvatarFallback className="rounded-lg text-lg">CN</AvatarFallback>
                 </Avatar>
-                <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">{user.name}</span>
-                  <span className="truncate text-xs">{user.email}</span>
+                <div className="grid flex-1 leading-tight">
+                  <span className="truncate text-base font-semibold">{user.name}</span>
+                  <span className="truncate text-sm text-gray-500">{user.email}</span>
                 </div>
               </div>
             </DropdownMenuLabel>
+
             <DropdownMenuSeparator />
+
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <Sparkles />
+                <Sparkles className="size-4 mr-2" />
                 Upgrade to Pro
               </DropdownMenuItem>
             </DropdownMenuGroup>
+
             <DropdownMenuSeparator />
+
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <BadgeCheck />
+                <BadgeCheck className="size-4 mr-2" />
                 Account
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <CreditCard />
+                <CreditCard className="size-4 mr-2" />
                 Billing
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Bell />
+                <Bell className="size-4 mr-2" />
                 Notifications
               </DropdownMenuItem>
             </DropdownMenuGroup>
+
             <DropdownMenuSeparator />
+
             <DropdownMenuItem>
-              <LogOut />
+              <LogOut className="size-4 mr-2" />
               Log out
             </DropdownMenuItem>
           </DropdownMenuContent>

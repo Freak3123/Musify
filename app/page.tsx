@@ -16,12 +16,12 @@ export default function Page() {
           {/* Left Sidebar */}
           <SidebarLeft className="shrink-0  w-[18vw]" />
           {/* Middle Content */}
-          <div className="flex flex-1  flex-col overflow-hidden">
+          <div className="flex flex-1 flex-col overflow-hidden">
             {/* Sticky Header */}
-            <header className="sticky top-0 p-4 z-10 bg-background flex items-center gap-2 px-3 ">
+            <header className="sticky xl:mx-5 top-0 p-4 pt-6 z-10 bg-background flex items-center gap-2 xl:gap-3 px-3 ">
               <ChevronLeft />
               <ChevronRight />
-              <Input placeholder="⌕ Search" className=" h-12 flex-1" />
+              <Input placeholder="⌕ Search" className=" h-12 flex-1 mr-4" />
               <Ellipsis />
             </header>
 

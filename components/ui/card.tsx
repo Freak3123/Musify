@@ -3,9 +3,6 @@ import React from "react"
 import Image from "next/image"
 import { musicData } from "@/Data"
 
-
-
-
 type MusicCardProps = {
   imageUrl?: string
   name?: string
@@ -15,7 +12,7 @@ type MusicCardProps = {
 }
 
 export function BigMusicCard({
-  imageUrl = "/music_cover.jpg", // Default image URL (ensure this exists in the public folder)
+  imageUrl = "/music_cover.jpg", // Default image URL
   name = "Unknown Track",
   singer = "Unknown Artist",
   song
@@ -27,11 +24,6 @@ export function BigMusicCard({
       window.dispatchEvent(event);
     }
   };
-
-
-
-
-
   return (
     <div onClick={handleClick} className="rounded-md shadow-lg overflow-hidden">
       {/* Image */}
@@ -45,7 +37,7 @@ export function BigMusicCard({
       </div>
 
       {/* Song Details */}
-      <div className="p-4">
+      <div className=" p-4 dark:py-4 dark:px-0">
         <h3 className="text-md font-semibold truncate">{name}</h3>
         <p className="text-xs text-gray-600 truncate">{singer}</p>
       </div>
@@ -67,16 +59,16 @@ export function MusicCard({
     }
   }
   return (
-    <div className="flex  items-center overflow-hidden rounded-lg dark:bg-zinc-950 bg-white shadow-md hover:shadow-lg transition-shadow duration-300 h-14">
+    <div className="flex items-center overflow-hidden py-6 dark:bg-zinc-950 bg-gray-50 shadow-md hover:shadow-lg transition-shadow duration-300 h-14">
       {/* Left: Music Image */}
       <div className="w-14 h-14 relative flex-shrink-0">
-        <Image src={imageUrl} alt={name} fill className="object-cover rounded-l-lg" />
+        <Image src={imageUrl} alt={name} fill className="object-cover rounded-l-lg dark:rounded-none" />
       </div>
 
       {/* Right: Music Details */}
-      <div className="flex dark:bg-zinc-950 justify-between items-center w-full ml-4 pr-4">
+      <div className="flex dark:bg-zinc-950 justify-between items-center w-full pl-4">
         <div className="min-w-0 max-w-[60%] flex justify-start  flex-col">
-          <h3 className="text-sm dark:text-white font-semibold text-gray-900 truncate">{name}</h3>
+          <h3 className="text-sm dark:text-gray-50 font-semibold text-gray-900 truncate">{name}</h3>
           <p className="text-xs text-gray-500 truncate">{sliceMe(singer)}</p>
         </div>
         <div className="flex justify-end">

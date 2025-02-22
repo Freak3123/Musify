@@ -39,16 +39,15 @@ export function NavRecentlyPlayed({
   const { isMobile } = useSidebar()
 
   return (
-    <SidebarGroup className="pt-4 group-data-[collapsible=icon]:hidden">
-      <SidebarGroupLabel className="text-base">
-        <div className="w-full">
-          Recently Played
-        </div>
-        <div className="flex justify-end w-full">
-          <button className="flex justify-end hover:text-gray-950 dark:hover:text-gray-200 transition-all duration-300">
-            See all
-          </button>
-        </div>
+    <SidebarGroup className="group-data-[collapsible=icon]:hidden">
+      <SidebarGroupLabel className="flex justify-between px-0 items-center text-base text-gray-950 dark:text-gray-50 mb-2">
+        <span>Recently Played</span>
+        <button
+          className="hover:text-gray-950 dark:hover:text-gray-200 text-gray-500 text-xs transition-all duration-300"
+          aria-label="See all recently played"
+        >
+          See all
+        </button>
       </SidebarGroupLabel>
       <SidebarMenu className="gap-2">
         {favorites.map((item) => (

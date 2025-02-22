@@ -23,11 +23,11 @@ type NavWorkspacesProps = {
 export function NavWorkspaces({ workspaces = [] }: NavWorkspacesProps) {
   return (
     <SidebarGroup>
-      <SidebarGroupLabel className="flex justify-between items-center text-base">
+      <SidebarGroupLabel className="flex justify-between px-0 items-center dark:text-gray-50 text-gray-950 text-base mb-2">
         <span>My Playlist</span>
         <button
-          className="hover:text-gray-950 dark:hover:text-gray-200 transition-all duration-300"
-          aria-label="See all recently played"
+          className="hover:text-gray-950 dark:hover:text-gray-200 text-gray-500 text-xs transition-all duration-300"
+          aria-label="See all playlists"
         >
           See all
         </button>
