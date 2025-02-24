@@ -1,3 +1,4 @@
+'use client'
 import * as React from "react";
 import { NavUser } from "@/components/nav-user";
 import { musicData } from "@/Data";
@@ -13,8 +14,14 @@ import { NavRecentlyPlayed } from "./nav-recentlyPlayed";
 import { NavWorkspaces } from "./nav-workspaces";
 import { Button } from "./ui/button";
 import { data } from "@/Data";
+import { useIsMobile } from "@/hooks/use-mobile";
+
 
 export function SidebarRight(props: React.ComponentProps<typeof Sidebar>) {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return null
+  }
   return (
     <Sidebar collapsible="none" {...props}>
       <SidebarHeader>
