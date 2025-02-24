@@ -16,7 +16,6 @@ import { Button } from "./ui/button";
 import { data } from "@/Data";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-
 export function SidebarRight(props: React.ComponentProps<typeof Sidebar>) {
   const isMobile = useIsMobile();
   if (isMobile) {

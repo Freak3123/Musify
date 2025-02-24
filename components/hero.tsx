@@ -4,10 +4,12 @@ import Image from "next/image"
 import { data, musicData } from "@/Data"
 import { BigMusicCard } from "./ui/card"
 import { useScreenSize } from "@/hooks/useScreenSize";
+import { useIsMobile } from "@/hooks/use-mobile"
 
 const Hero = () => {
     const isXl = useScreenSize();
-    const songsToDisplay = isXl ? 5 : 4;
+    const isMobile = useIsMobile()
+    const songsToDisplay = (isXl || !isMobile) ? 5 : 4;
 
     const renderMusicCards = (songs: typeof musicData.recents) =>
         songs.slice(0, songsToDisplay).map((song) => (
@@ -46,7 +48,7 @@ const Hero = () => {
                     </button>
                 </h1>
                 <div className="overflow-x-auto w-full no-scrollbar">
-                    <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                    <div className={`grid ${isMobile ? "grid-cols-4" : "grid-cols-3"} md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-4`}>
                         {renderMusicCards(musicData.recents)}
                     </div>
                 </div>
@@ -60,7 +62,7 @@ const Hero = () => {
                         See all
                     </button></h1>
                 <div className="overflow-x-auto w-full no-scrollbar">
-                    <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                    <div className={`grid ${isMobile ? "grid-cols-4" : "grid-cols-3"} md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-4`}>
                         {renderMusicCards(musicData.recents)}
                     </div>
                 </div>
