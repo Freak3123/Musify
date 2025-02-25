@@ -18,6 +18,8 @@ import {
 } from "lucide-react";
 import ThemeChanger from "./ThemeChanger";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { musicData } from "@/Data";
+
 
 const Player = () => {
   type Song = {
@@ -30,6 +32,8 @@ const Player = () => {
   const [progress, setProgress] = useState(0);
   const [isRepeating, setIsRepeating] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const [songs, setSongs] = useState(musicData.recents); // All songs
+const [currentIndex, setCurrentIndex] = useState(-1); 
 
   useEffect(() => {
     const handleSongSelection = (event: Event) => {
@@ -55,6 +59,19 @@ const Player = () => {
       }
     }
   }, [isPlaying, currentSong]);
+  useEffect(() => {
+    const handleSongSelection = (event: Event) => {
+      const customEvent = event as CustomEvent<Song>;
+      const songIndex = songs.findIndex(song => song.name === customEvent.detail.name);
+      
+      setCurrentIndex(songIndex); // Save the song's index
+      setCurrentSong(customEvent.detail);
+      setIsPlaying(true);
+    };
+  
+    window.addEventListener("songSelected", handleSongSelection);
+    return () => window.removeEventListener("songSelected", handleSongSelection);
+  }, [songs]); 
 
   // Update progress
   const handleTimeUpdate = () => {
@@ -90,6 +107,24 @@ const Player = () => {
   }, [isRepeating]);
 
   const IsMobile = useIsMobile();
+  const handleNext = () => {
+    if (currentIndex < songs.length - 1) {
+      const nextIndex = currentIndex + 1;
+      setCurrentIndex(nextIndex);
+      setCurrentSong(songs[nextIndex]);
+      setIsPlaying(true);
+    }
+  };
+  
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      const prevIndex = currentIndex - 1;
+      setCurrentIndex(prevIndex);
+      setCurrentSong(songs[prevIndex]);
+      setIsPlaying(true);
+    }
+  };
+  
 
   return (
     <>
@@ -153,8 +188,10 @@ const Player = () => {
             <button
               className="hover:text-black dark:text-white"
               title="Previous Track"
+              disabled={currentIndex === 0}
+
             >
-              <SkipBack className="h-4 w-4" />
+              <SkipBack className="h-4 w-4"  onClick={handlePrev}/>
             </button>
 
             {/* Audio Element */}
@@ -177,8 +214,8 @@ const Player = () => {
               )}
             </button>
 
-            <button className="hover:text-black" title="Next Track">
-              <SkipForward className="h-4 w-4 dark:text-white" />
+            <button   disabled={currentIndex === songs.length - 1} className="hover:text-black" title="Next Track">
+              <SkipForward onClick={handleNext} className="h-4 w-4 dark:text-white" />
             </button>
 
             <button

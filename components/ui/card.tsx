@@ -50,6 +50,7 @@ export function MusicCard({
   name = "Unknown Track",
   singer = "Unknown Artist",
   duration = "00:00",
+  song
 }: MusicCardProps) {
   function sliceMe(str: string) {
     if (str.length >= 18) {
@@ -58,8 +59,14 @@ export function MusicCard({
       return str
     }
   }
+  const handleClick = () => {
+    if (typeof window !== "undefined") {
+      const event = new CustomEvent("songSelected", { detail: song });
+      window.dispatchEvent(event);
+    }
+  };
   return (
-    <div className="flex items-center overflow-hidden py-6 dark:bg-zinc-950 bg-gray-50 shadow-md hover:shadow-lg transition-shadow duration-300 h-14">
+    <div onClick={handleClick} className="flex cursor-pointer items-center overflow-hidden py-6 dark:bg-zinc-950 bg-gray-50 shadow-md hover:shadow-lg transition-shadow duration-300 h-14">
       {/* Left: Music Image */}
       <div className="w-14 h-14 relative flex-shrink-0">
         <Image src={imageUrl} alt={name} fill className="object-cover rounded-l-lg dark:rounded-none" />

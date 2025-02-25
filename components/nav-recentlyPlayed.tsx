@@ -53,7 +53,7 @@ export function NavRecentlyPlayed({
         {favorites.map((item) => (
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton asChild>
-              <MusicCard name={item.name} singer={item.author} duration={item.duration} />
+              <MusicCard song={item} name={item.name} singer={item.author} duration={item.duration} />
             </SidebarMenuButton>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
