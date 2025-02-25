@@ -730,5 +730,6 @@ export {
   SidebarMenuItem,
   SidebarProvider,
   SidebarRail,
+  SidebarTrigger,
   useSidebar,
 }

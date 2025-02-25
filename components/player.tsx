@@ -107,7 +107,7 @@ const Player = () => {
       )}
 
       {/* Music Player Controls */}
-      <div className="fixed bottom-0 w-full h-24 pr-4 bg-white dark:bg-zinc-950 text-black z-40 flex items-center justify-between border-t border-black/10 shadow-lg">
+      <div className="fixed bottom-0 w-full h-24 pr-4 bg-white dark:bg-zinc-950 text-black z-40 flex justify-between items-center border-t border-black/10 shadow-lg">
         {/* Song Info */}
         {IsMobile && (
           <div>
@@ -120,8 +120,8 @@ const Player = () => {
           </div>
         )}
         <div
-          className={`flex items-center gap-4 w-[20%] min-w-[180px]  ${
-            IsMobile ? "pl-3" : "pl-6"
+          className={`flex items-center gap-4 min-w-0  ${
+            IsMobile ? "pl-2" : "pl-6"
           }`}
         >
           <div>
@@ -133,7 +133,7 @@ const Player = () => {
             </p>
           </div>
           {!IsMobile && (
-            <div className=" flex gap-4 ">
+            <div className=" flex pl-4 pr-2 gap-4 ">
               <Heart className="w-5 h-5 dark:text-white text-black/70 cursor-pointer hover:text-black" />
               <SquarePlus className="w-5 h-5 dark:text-white text-black/70 cursor-pointer hover:text-black" />
             </div>
