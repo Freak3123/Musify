@@ -13,12 +13,12 @@ export const musicList = {
     {
       "name": "Stairway to Heaven",
       "author": "Led Zeppelin",
-      
+
     },
     {
       "name": "Bohemian Rhapsody",
       "author": "Queen",
-      
+
     },
     {
       "name": "Hotel California",
@@ -27,34 +27,34 @@ export const musicList = {
     {
       "name": "Smells Like Teen Spirit",
       "author": "Nirvana",
-      
+
     },
     {
       "name": "Shape of You",
       "author": "Ed Sheeran",
-       
+
     }
   ]
 }
 
 // Menu items.
 export const sideNavitems = {
-    FEATURES:[{
-      title: "Home",
-      url: "#",
-      icon: Home,
-    },
-    {
-      title: "Discover",
-      url: "#",
-      icon: Inbox,
-    },
-    {
-      title: "Collection",
-      url: "#",
-      icon: Calendar,
-    },],
-    LIBRARY:[
+  FEATURES: [{
+    title: "Home",
+    url: "#",
+    icon: Home,
+  },
+  {
+    title: "Discover",
+    url: "#",
+    icon: Inbox,
+  },
+  {
+    title: "Collection",
+    url: "#",
+    icon: Calendar,
+  },],
+  LIBRARY: [
     {
       title: "Download",
       url: "#",
@@ -70,8 +70,8 @@ export const sideNavitems = {
       url: "#",
       icon: Calendar,
     },],
-  }
-  
+}
+
 export const musicData = {
   recents: [
     {
@@ -107,7 +107,7 @@ export const musicData = {
       author: "Ed Sheeran",
       url: "/",
       duration: "3:53",
-      audio : "/musicFiles/shapeOfYou.mp3"
+      audio: "/musicFiles/shapeOfYou.mp3"
     },
     {
       name: "Rolling in the Deep",
@@ -258,3 +258,16 @@ export const musicData = {
     },
   ],
 }
+
+export const loadPlaylists = () => {
+  if (typeof window !== "undefined") {
+    const savedPlaylists = localStorage.getItem("playlists");
+    return savedPlaylists ? JSON.parse(savedPlaylists) : musicData.playlists;
+  }
+  return musicData.playlists;
+};
+
+export const savePlaylists = (playlists: typeof musicData.playlists) => {
+  localStorage.setItem("playlists", JSON.stringify(playlists));
+};
+

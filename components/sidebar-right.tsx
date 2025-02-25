@@ -1,7 +1,7 @@
 'use client'
 import * as React from "react";
 import { NavUser } from "@/components/nav-user";
-import { musicData } from "@/Data";
+import { loadPlaylists, musicData, savePlaylists } from "@/Data";
 import {
   Sidebar,
   SidebarContent,
@@ -12,12 +12,26 @@ import {
 } from "@/components/ui/sidebar";
 import { NavRecentlyPlayed } from "./nav-recentlyPlayed";
 import { NavWorkspaces } from "./nav-workspaces";
-import { Button } from "./ui/button";
 import { data } from "@/Data";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Sheet } from "./ui/sheet";
+import { CreatePlaylistPopup } from "./Create-playlist-popup";
 
 export function SidebarRight(props: React.ComponentProps<typeof Sidebar>) {
   const isMobile = useIsMobile();
+  const [playlists, setPlaylists] = React.useState(() => loadPlaylists());
+
+  const handleCreatePlaylist = (playlistName: string) => {
+    const newPlaylist = {
+      name: playlistName,
+      pages: [],
+    };
+    const updatedPlaylists = [...playlists, newPlaylist];
+    setPlaylists(updatedPlaylists);
+    savePlaylists(updatedPlaylists);
+    console.log(updatedPlaylists);
+  };
+
   if (isMobile) {
     return null
   }
@@ -33,7 +47,9 @@ export function SidebarRight(props: React.ComponentProps<typeof Sidebar>) {
 
         <SidebarMenu>
           <SidebarMenuItem className="flex justify-center">
-            <Button className="w-[90%] text-sm font-semibold hover:bg-blue-600 max-w-64 mt-4 rounded-md">Create New Playlist</Button>
+            <Sheet>
+              <CreatePlaylistPopup onCreate={handleCreatePlaylist} />
+            </Sheet>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarContent>
