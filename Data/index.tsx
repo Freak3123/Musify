@@ -8,35 +8,6 @@ export const data = {
   },
 }
 
-export const musicList = {
-  "songs": [
-    {
-      "name": "Stairway to Heaven",
-      "author": "Led Zeppelin",
-
-    },
-    {
-      "name": "Bohemian Rhapsody",
-      "author": "Queen",
-
-    },
-    {
-      "name": "Hotel California",
-      "author": "Eagles"
-    },
-    {
-      "name": "Smells Like Teen Spirit",
-      "author": "Nirvana",
-
-    },
-    {
-      "name": "Shape of You",
-      "author": "Ed Sheeran",
-
-    }
-  ]
-}
-
 // Menu items.
 export const sideNavitems = {
   FEATURES: [{
@@ -120,24 +91,28 @@ export const musicData = {
       author: "Michael Jackson",
       url: "/",
       duration: "4:54",
+      audio: "musicFiles/billieJean.mp3"
     },
     {
       name: "Dance Monkey",
       author: "Tones and I",
       url: "/",
       duration: "3:30",
+      audio: "/musicFiles/danceMonkey.mp3"
     },
     {
       name: "Blinding Lights",
       author: "The Weeknd",
       url: "/",
       duration: "3:20",
+      audio: "/musicFiles/blindingLights.mp3"
     },
     {
       name: "Uptown Funk",
       author: "Mark Ronson ft. Bruno Mars",
       url: "/",
       duration: "4:30",
+      audio: "/musicFiles/uptownfunk.mp3"
     },
   ],
   playlists: [
