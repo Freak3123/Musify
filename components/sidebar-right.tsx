@@ -17,9 +17,12 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { Sheet } from "./ui/sheet";
 import { CreatePlaylistPopup } from "./Create-playlist-popup";
 
+
 export function SidebarRight(props: React.ComponentProps<typeof Sidebar>) {
   const isMobile = useIsMobile();
   const [playlists, setPlaylists] = React.useState(() => loadPlaylists());
+  const apnaMusicData=musicData.playlists;
+  console.log(apnaMusicData)
 
   const handleCreatePlaylist = (playlistName: string) => {
     const newPlaylist = {
@@ -42,8 +45,11 @@ export function SidebarRight(props: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
 
       <SidebarContent className="gap-5 px-4">
-        <NavRecentlyPlayed favorites={musicData.recents.slice(6)} />
-        <NavWorkspaces workspaces={musicData.playlists.slice(1)} />
+        <NavRecentlyPlayed favorites={musicData.recents.slice(0,4)} />
+        <NavWorkspaces workspaces={apnaMusicData.reverse()
+          .slice(0,4)
+        } 
+          />
 
         <SidebarMenu>
           <SidebarMenuItem className="flex justify-center">

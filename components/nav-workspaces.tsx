@@ -20,7 +20,7 @@ type NavWorkspacesProps = {
   }[];
 };
 
-export function NavWorkspaces({ workspaces = [] }: NavWorkspacesProps) {
+export function NavWorkspaces({ workspaces  }: NavWorkspacesProps) {
   return (
     <SidebarGroup>
       <SidebarGroupLabel className="flex justify-between px-0 items-center dark:text-gray-50 text-gray-950 text-base mb-2">
@@ -36,14 +36,14 @@ export function NavWorkspaces({ workspaces = [] }: NavWorkspacesProps) {
       <SidebarGroupContent>
         {workspaces.length > 0 ? (
           <SidebarMenu className="gap-2">
-            {workspaces.map(({ name, pages }) =>
-              pages.length > 0 ? (
-                <SidebarMenuItem key={name}>
+            {workspaces.map((item) =>
+              item.pages.length > 0 ? (
+                <SidebarMenuItem key={item.name}>
                     <MusicCard
-                      name={pages[0].name}
-                      singer={pages[0].author}
-                      duration={pages[0].duration}
-                      imageUrl={pages[0].imageUrl}
+                      name={item.name}
+                      singer={item.pages[0].author}
+                      duration={item.pages[0].duration}
+                      imageUrl={item.pages[0].imageUrl}
                     />
                   
                   

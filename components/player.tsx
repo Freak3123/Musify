@@ -35,7 +35,7 @@ const Player = () => {
   const songs = musicData.recents;
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [isShuffling, setIsShuffling] = useState(false);
-
+  const [isLiked, setLiked] = useState(false)
   useEffect(() => {
     const handleSongSelection = (event: Event) => {
       const customEvent = event as CustomEvent<Song>;
@@ -89,6 +89,8 @@ const Player = () => {
       setProgress(value[0]);
     }
   }, []);
+
+
 
   const handleVolumeChange = useCallback((value: number[]) => {
     if (audioRef.current) audioRef.current.volume = value[0] / 100;
@@ -157,9 +159,10 @@ const Player = () => {
       {/* Music Player Controls */}
       <div className="fixed bottom-0 w-full h-24 pr-4 bg-white dark:bg-zinc-950 text-black z-40 flex justify-between items-center border-t border-black/10 shadow-lg">
         {/* Song Info */}
-        {IsMobile && (
+        {!IsMobile && (
           <div>
             <Image
+            className="w-15 h-15"
               src="/music_cover.jpg"
               alt="Album Cover"
               height={100}
@@ -181,7 +184,7 @@ const Player = () => {
           </div>
           {!IsMobile && (
             <div className=" flex pl-4 pr-2 gap-4 ">
-              <Heart className="w-5 h-5 dark:text-white text-black/70 cursor-pointer hover:text-black" />
+              <Heart onClick={() => { setLiked(!isLiked) }} className={`w-5 h-5 ${isLiked ? "text-red-600 " : " dark:text-white text-black"}    cursor-pointer `} />
               <SquarePlus className="w-5 h-5 dark:text-white text-black/70 cursor-pointer hover:text-black" />
             </div>
           )}
@@ -275,7 +278,7 @@ const Player = () => {
             <div className="flex gap-4">
               <Volume2 className="w-5 h-5 cursor-pointer" />
               <Slider
-                defaultValue={[50]}
+                defaultValue={[100]}
                 max={100}
                 step={1}
                 onValueChange={handleVolumeChange}
@@ -283,16 +286,15 @@ const Player = () => {
               />
             </div>
           )}
-          {IsMobile && (
-            <Heart className="w-5 h-5 dark:text-white text-black/70 cursor-pointer hover:text-black" />
-          )}
+      
           <ThemeChanger />
           {!IsMobile && (
-            <div>
+            <div className="flex"> 
               <Mic2 className="w-5 h-5 cursor-pointer hover:text-blue-500 dark:hover:text-blue-500" />
+              <MonitorSmartphone className="w-5 h-5 cursor-pointerhover:text-blue-500 dark:hover:text-blue-500" />
             </div>
           )}
-          <MonitorSmartphone className="w-5 h-5 cursor-pointerhover:text-blue-500 dark:hover:text-blue-500" />
+       
           {!IsMobile && (
             <div>
               <Share2 className="w-5 h-5 cursor-pointer hover:text-blue-500 dark:hover:text-blue-500" />
