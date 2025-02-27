@@ -159,10 +159,9 @@ const Player = () => {
       {/* Music Player Controls */}
       <div className="fixed bottom-0 w-full h-24 pr-4 bg-white dark:bg-zinc-950 text-black z-40 flex justify-between items-center border-t border-black/10 shadow-lg">
         {/* Song Info */}
-        {!IsMobile && (
+        {IsMobile && (
           <div>
             <Image
-            className="w-15 h-15"
               src="/music_cover.jpg"
               alt="Album Cover"
               height={100}
@@ -286,15 +285,13 @@ const Player = () => {
               />
             </div>
           )}
-      
           <ThemeChanger />
           {!IsMobile && (
-            <div className="flex"> 
+            <div className="flex gap-4">
               <Mic2 className="w-5 h-5 cursor-pointer hover:text-blue-500 dark:hover:text-blue-500" />
               <MonitorSmartphone className="w-5 h-5 cursor-pointerhover:text-blue-500 dark:hover:text-blue-500" />
             </div>
           )}
-       
           {!IsMobile && (
             <div>
               <Share2 className="w-5 h-5 cursor-pointer hover:text-blue-500 dark:hover:text-blue-500" />
