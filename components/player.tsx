@@ -159,7 +159,7 @@ const Player = () => {
       {/* Music Player Controls */}
       <div className="fixed bottom-0 w-full h-24 pr-4 bg-white dark:bg-zinc-950 text-black z-40 flex justify-between items-center border-t border-black/10 shadow-lg">
         {/* Song Info */}
-        {IsMobile && (
+        {/* {IsMobile && (
           <div>
             <Image
               src="/music_cover.jpg"
@@ -168,7 +168,7 @@ const Player = () => {
               width={100}
             />
           </div>
-        )}
+        )} */}
         <div
           className={`flex items-center gap-4 min-w-0  ${IsMobile ? "pl-2" : "pl-6"
             }`}
